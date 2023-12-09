@@ -12,9 +12,13 @@ config_version=5
 
 config/name="FluidSimDemo"
 run/main_scene="res://scene/fluid_demo.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 ParticleCounter="*res://singleton/particle_counter.gd"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.152941, 0.392157, 0.407843, 1)

@@ -13,7 +13,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iboht"]
 shader = ExtResource("3_872f1")
 shader_parameter/alpha_threshold = 0.5
-shader_parameter/swap_color = Color(0.388235, 0.607843, 1, 1)
+shader_parameter/swap_color = Color(0.235294, 0.623529, 0.611765, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_0vu6x"]
 viewport_path = NodePath("FluidViewport")
