@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsjr816kbcyde"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://csuknxo6u7hj8" path="res://entity/fluid_physics_material.tres" id="1_i4bqb"]
+[ext_resource type="Texture2D" uid="uid://cpnf1hr3758ka" path="res://asset/ball.png" id="2_l8epe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2xfx"]
+radius = 13.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ud64"]
+blend_mode = 1
+
+[node name="FluidParticle" type="RigidBody2D" groups=["FluidParticle"]]
+mass = 100.0
+physics_material_override = ExtResource("1_i4bqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g2xfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+material = SubResource("CanvasItemMaterial_8ud64")
+texture = ExtResource("2_l8epe")
