@@ -75,6 +75,7 @@ custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+min_value = 0.01
 max_value = 1.0
 step = 0.01
 value = 0.4
