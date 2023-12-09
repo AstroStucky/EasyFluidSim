@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://j7j57c1dux6"]
+
+[ext_resource type="PackedScene" uid="uid://b7xl37ldgfmpm" path="res://scene/control_panel.tscn" id="1_c3mas"]
+[ext_resource type="PackedScene" uid="uid://b1ad2spybwd77" path="res://entity/spigot.tscn" id="2_y77pr"]
+[ext_resource type="Script" path="res://entity/Spigot.gd" id="3_45le8"]
+[ext_resource type="Script" path="res://entity/ViewportDupePolygon2D.gd" id="3_61t4p"]
+[ext_resource type="Script" path="res://entity/ViewportSprite.gd" id="3_76jbu"]
+[ext_resource type="Shader" path="res://shader/fluid_thresholder.gdshader" id="3_872f1"]
+[ext_resource type="PackedScene" uid="uid://c6bw6dukqcet3" path="res://entity/FluidSource.tscn" id="3_hmx2f"]
+[ext_resource type="Texture2D" uid="uid://dops5h1l0ouqr" path="res://asset/dirt.png" id="5_0jqhr"]
+[ext_resource type="Script" path="res://entity/FluidSink.gd" id="7_vy3ay"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iboht"]
+shader = ExtResource("3_872f1")
+shader_parameter/alpha_threshold = 0.5
+shader_parameter/swap_color = Color(0.388235, 0.607843, 1, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0vu6x"]
+viewport_path = NodePath("FluidViewport")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgp5l"]
+size = Vector2(17999.5, 1502)
+
+[node name="fluid_demo" type="Node2D"]
+
+[node name="ControlPanel" parent="." instance=ExtResource("1_c3mas")]
+
+[node name="ViewportSprite" type="Sprite2D" parent="." groups=["ViewportSprite"]]
+material = SubResource("ShaderMaterial_iboht")
+texture = SubResource("ViewportTexture_0vu6x")
+centered = false
+region_rect = Rect2(0, 0, 1000, 500)
+script = ExtResource("3_76jbu")
+
+[node name="FluidViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1152, 648)
+
+[node name="FluidSink" type="Area2D" parent="."]
+position = Vector2(425, 1786)
+monitorable = false
+script = ExtResource("7_vy3ay")
+fluid_viewport_path = NodePath("../FluidViewport")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FluidSink"]
+shape = SubResource("RectangleShape2D_sgp5l")
+
+[node name="Spigot" parent="." instance=ExtResource("2_y77pr")]
+position = Vector2(85, 80)
+script = ExtResource("3_45le8")
+activate_path = NodePath("FluidSource")
+
+[node name="FluidSource" parent="Spigot" instance=ExtResource("3_hmx2f")]
+position = Vector2(61, 47)
+spray = 10.0
+fluid_viewport_path = NodePath("../../FluidViewport")
+
+[node name="Terrain" type="Polygon2D" parent="."]
+texture_repeat = 2
+position = Vector2(334, 293)
+texture = ExtResource("5_0jqhr")
+polygon = PackedVector2Array(-322, -100, -320, -41, -320, 32, -272, 85, -186, 99, -79, 97, 19, 73, 95, 78, 132, 95, 11, 243, -152, 390, -669, 383, -669, -166, -374, -176)
+script = ExtResource("3_61t4p")
+fluid_viewport_path = NodePath("../FluidViewport")
+
+[node name="Terrain2" type="Polygon2D" parent="."]
+texture_repeat = 2
+position = Vector2(1280, 326)
+texture = ExtResource("5_0jqhr")
+polygon = PackedVector2Array(-791, 104, -705, 138, -621, 160, -615, 247, -612, 330, -829, 339, -824, 261, -823, 163)
+script = ExtResource("3_61t4p")
+fluid_viewport_path = NodePath("../FluidViewport")
+
+[node name="Terrain3" type="Polygon2D" parent="."]
+texture_repeat = 2
+position = Vector2(1265, 333)
+texture = ExtResource("5_0jqhr")
+polygon = PackedVector2Array(-595, 154, -585, 317, -581, 358, -413, 382, -220, 359, -228, 197, -279, 224, -337, 239, -398, 221, -465, 162, -500, 112, -545, 140)
+script = ExtResource("3_61t4p")
+fluid_viewport_path = NodePath("../FluidViewport")

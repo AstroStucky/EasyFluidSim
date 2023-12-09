@@ -1,0 +1,12 @@
+# Normalize EOL for all files that Git considers text files.
+* text=auto eol=lf
+asset/ball.png filter=lfs diff=lfs merge=lfs -text
+asset/dirt.png filter=lfs diff=lfs merge=lfs -text
+asset/palette.png filter=lfs diff=lfs merge=lfs -text
+asset/pipe.png filter=lfs diff=lfs merge=lfs -text
+asset/metaball.png filter=lfs diff=lfs merge=lfs -text
+asset/spigot_backrim.png filter=lfs diff=lfs merge=lfs -text
+asset/spigot.png filter=lfs diff=lfs merge=lfs -text
+asset/transparent.png filter=lfs diff=lfs merge=lfs -text
+asset/white.png filter=lfs diff=lfs merge=lfs -text
+icon.svg filter=lfs diff=lfs merge=lfs -text

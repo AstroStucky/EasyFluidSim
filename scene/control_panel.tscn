@@ -1,0 +1,224 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7xl37ldgfmpm"]
+
+[ext_resource type="Script" path="res://entity/FPSCounter.gd" id="1_2p5yk"]
+[ext_resource type="Script" path="res://entity/PropertySlider.gd" id="2_pl3fo"]
+[ext_resource type="Script" path="res://entity/ParticleCount.gd" id="3_04iqk"]
+
+[sub_resource type="Theme" id="Theme_blrfq"]
+default_font_size = 28
+
+[node name="ControlPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 952.0
+offset_right = 1152.0
+offset_bottom = 200.0
+
+[node name="Control" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -316.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 89.0
+grow_horizontal = 0
+
+[node name="PropertiesLabel" type="Label" parent="Control"]
+layout_mode = 2
+theme = SubResource("Theme_blrfq")
+text = "Particle Properties"
+horizontal_alignment = 2
+
+[node name="Radius" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/Radius"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Radius
+"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Control/Radius"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.5
+max_value = 10.0
+step = 0.5
+value = 3.5
+ticks_on_borders = true
+script = ExtResource("2_pl3fo")
+mod_group = "FluidSource"
+mod_prop = "particle_radius"
+
+[node name="SliderValue" type="Label" parent="Control/Radius"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "#.#"
+
+[node name="Alpha Threshold" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/Alpha Threshold"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "α-Threshold"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Control/Alpha Threshold"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.4
+script = ExtResource("2_pl3fo")
+mod_group = "ViewportSprite"
+mod_prop = "alpha_threshold"
+
+[node name="SliderValue" type="Label" parent="Control/Alpha Threshold"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "#.#"
+
+[node name="Bounce" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/Bounce"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Bounce"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Control/Bounce"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+script = ExtResource("2_pl3fo")
+mod_group = "FluidSource"
+mod_prop = "particle_bounce"
+
+[node name="SliderValue" type="Label" parent="Control/Bounce"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "#.#"
+
+[node name="Friction" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/Friction"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Friction
+"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Control/Friction"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.01
+script = ExtResource("2_pl3fo")
+mod_group = "FluidSource"
+mod_prop = "particle_friction"
+
+[node name="SliderValue" type="Label" parent="Control/Friction"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "#.#"
+
+[node name="Rate" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/Rate"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Rate
+"
+horizontal_alignment = 2
+
+[node name="HSlider" type="HSlider" parent="Control/Rate"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 1.0
+value = 10.0
+script = ExtResource("2_pl3fo")
+mod_group = "FluidSource"
+mod_prop = "particle_rate"
+
+[node name="SliderValue" type="Label" parent="Control/Rate"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "#.#"
+
+[node name="HSeparator" type="HSeparator" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="StatisticsLabel" type="Label" parent="Control"]
+layout_mode = 2
+theme = SubResource("Theme_blrfq")
+text = "Statistics
+"
+horizontal_alignment = 2
+
+[node name="FPS" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Control/FPS"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "FPS"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="Control/FPS"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="FPSCounter" type="Label" parent="Control/FPS"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "###"
+horizontal_alignment = 2
+script = ExtResource("1_2p5yk")
+
+[node name="Particle #" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label" type="Label" parent="Control/Particle #"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+text = "Particle #"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="Control/Particle #"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ParticleCount" type="Label" parent="Control/Particle #"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+text = "#####"
+horizontal_alignment = 2
+script = ExtResource("3_04iqk")

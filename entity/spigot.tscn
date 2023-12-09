@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1ad2spybwd77"]
+
+[ext_resource type="Texture2D" uid="uid://68rrl5ygbric" path="res://asset/spigot.png" id="1_d4jps"]
+[ext_resource type="Texture2D" uid="uid://dqict2u76qi08" path="res://asset/pipe.png" id="2_cwckw"]
+[ext_resource type="Texture2D" uid="uid://beqjd1yk3k7va" path="res://asset/spigot_backrim.png" id="3_ol48c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62yru"]
+size = Vector2(99, 111)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xv62"]
+atlas = ExtResource("1_d4jps")
+region = Rect2(0, 0, 144, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hts6q"]
+atlas = ExtResource("1_d4jps")
+region = Rect2(144, 0, 144, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rucv8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xv62")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hts6q")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="Spigot" type="Area2D"]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16.5, -4.5)
+shape = SubResource("RectangleShape2D_62yru")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rucv8")
+animation = &"close"
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -10
+
+[node name="Line2D" type="Line2D" parent="Background"]
+texture_repeat = 2
+points = PackedVector2Array(-169, 362, -75, 360, 9, 266, 8, 78)
+width = 32.0
+texture = ExtResource("2_cwckw")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = ExtResource("3_ol48c")
