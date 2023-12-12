@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1kg3cxhqme7k"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://csuknxo6u7hj8" path="res://entity/fluid_physics_material.tres" id="1_8remc"]
+[ext_resource type="PhysicsMaterial" uid="uid://csuknxo6u7hj8" path="res://entity/fluid_physics_material.tres" id="1_ktuk2"]
 [ext_resource type="Texture2D" uid="uid://dr8pxsw2fft60" path="res://asset/metaball.png" id="1_xn0yx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2xfx"]
@@ -11,7 +11,7 @@ blend_mode = 1
 
 [node name="FluidParticle" type="RigidBody2D" groups=["FluidParticle"]]
 mass = 100.0
-physics_material_override = ExtResource("1_8remc")
+physics_material_override = ExtResource("1_ktuk2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

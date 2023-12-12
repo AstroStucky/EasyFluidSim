@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://j7j57c1dux6"]
 
-[ext_resource type="PackedScene" uid="uid://b7xl37ldgfmpm" path="res://scene/control_panel.tscn" id="1_c3mas"]
+[ext_resource type="PackedScene" uid="uid://b7xl37ldgfmpm" path="res://ui/control_panel.tscn" id="1_c3mas"]
 [ext_resource type="PackedScene" uid="uid://b1ad2spybwd77" path="res://entity/spigot.tscn" id="2_y77pr"]
 [ext_resource type="Script" path="res://entity/Spigot.gd" id="3_45le8"]
 [ext_resource type="Script" path="res://entity/ViewportDupePolygon2D.gd" id="3_61t4p"]
