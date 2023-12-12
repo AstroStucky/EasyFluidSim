@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 ParticleCounter="*res://singleton/particle_counter.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.152941, 0.392157, 0.407843, 1)
